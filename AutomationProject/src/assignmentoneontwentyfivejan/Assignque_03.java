@@ -1,0 +1,41 @@
+/* 1.WATS to verify username and password field dimensions are same or not. */
+
+package assignmentoneontwentyfivejan;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Assignque_03 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://demo.actitime.com/login.do");
+		//identify un field loc
+		WebElement un_loc = driver.findElement(By.xpath(".//input[@id='username']"));
+		//identify un_loc height
+		int h_un = un_loc.getRect().getDimension().getHeight();
+		//identify un_loc width
+		int w_un=un_loc.getRect().getDimension().getWidth();
+		System.out.println("Username height:"+h_un+"\n Username width:"+w_un);
+
+		
+		//identify password field
+		WebElement pwd_loc = driver.findElement(By.xpath(".//input[@name='pwd']"));
+		//identify un_loc height
+		int h_pwd= pwd_loc.getRect().getHeight();
+		//identify un_loc width
+		int w_pwd = pwd_loc.getRect().getWidth();
+		System.out.println("Password height:"+h_pwd+"\n Password width:"+w_pwd);
+
+		if (h_un==h_pwd && w_un==w_pwd) {
+			System.out.println("Dimensions of username and password field are same!");
+		}
+		else
+		{
+			System.out.println("Dimensions of username and password field are not same");
+		}
+	}
+}

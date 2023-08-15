@@ -1,0 +1,15 @@
+package independentanddependentxpath;
+
+public class PracticeFlipkart {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
+/*
+ Q.1)Write exp to identify iphone 14 Blue 128 GB mobile ratings and review
+ Q.2)Write exp to identify discount for above model
+ Q.3)
+*/

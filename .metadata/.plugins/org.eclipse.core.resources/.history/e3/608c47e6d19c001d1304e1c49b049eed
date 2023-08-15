@@ -1,0 +1,35 @@
+/* 
+ WATS to perform folln actions:
+ 1.Open fb appln.
+ 2.Click on Create new Account.
+ 3.Enter e-mail.
+ 4.Verify re-enter emailid field displayed or not.
+ 5.Remove email & verify re-enter 
+*/
+package assignmentoneontwentyfivejan;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+public class Assignque_01 {
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://fb.com");
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.findElement(By.xpath(".//a[text()='Create new account']")).click();
+		Thread.sleep(5000);
+		WebElement enter_emailid = driver.findElement(By.xpath(".//input[@class='inputtext _58mg _5dba _2ph-' and @name='reg_email__']"));
+		enter_emailid.sendKeys("abc@gmail.com");
+		String email_value = enter_emailid.getAttribute("value");
+		System.out.println(email_value);
+		//while()
+		//enter_emailid.sendKeys(Keys.BACK_SPACE);
+		
+		
+	}
+
+}

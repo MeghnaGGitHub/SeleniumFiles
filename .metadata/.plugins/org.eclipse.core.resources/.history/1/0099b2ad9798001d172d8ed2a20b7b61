@@ -1,0 +1,24 @@
+package arraylistcollectiondemo;
+
+import java.util.ArrayList;
+
+public class ArrayListDemoClass {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ArrayList<String> obj=new ArrayList<String>();
+		//add elements to collection!
+		obj.add("Name");
+		obj.add("MiddleName");
+		//print collection
+		System.out.println("Collection generated is:"+obj);
+		//add more elements 
+		obj.add("LastName");
+		//add specific element to specified index
+		obj.add(1, "NickName");
+		//print collection
+		System.out.println("Collection modified is:"+obj);
+
+	}
+
+}

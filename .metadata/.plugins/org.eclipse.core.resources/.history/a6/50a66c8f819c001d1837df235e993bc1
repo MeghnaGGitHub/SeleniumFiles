@@ -1,0 +1,26 @@
+package practicescripts;
+
+import java.util.Scanner;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class ixigo {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		WebDriver driver=new ChromeDriver();
+		System.out.println("Enter From City Airport Code");
+		String fromCity=input.toString();
+		System.out.println("Enter To City Airport Code");
+		String toCity=input.toString();
+		System.out.println("Enter date of departure in format DDMMYYYY");
+		String departureDate=input.toString();
+		String link="https://www.ixigo.com/search/result/flight?from="+fromCity+"&to="+toCity+"&date="+departureDate+"&returnDate=&adults=1&children=0&infants=0&class=e&source=Recent%20Searches%20Widget";
+		if(fromCity!=null&&toCity!=null&&departureDate!=null)
+		{
+		driver.get(link);
+		}
+	}
+
+}

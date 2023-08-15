@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Test(failed)">
+    <parameter name="pwd" value="admin123"/>
+    <parameter name="email" value="admin@gmail.com"/>
+    <classes>
+      <class name="testngdayfivedec15selwithtestng.FacebookLogin">
+        <methods>
+          <include name="test1" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- testngdayfivedec15selwithtestng.FacebookLogin -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

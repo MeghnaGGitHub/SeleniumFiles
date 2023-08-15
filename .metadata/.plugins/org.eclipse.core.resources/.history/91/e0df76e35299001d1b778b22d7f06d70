@@ -1,0 +1,20 @@
+package xpathscripts;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class XPathByContains {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		WebDriverManager.firefoxdriver().setup();
+		WebDriver driver=new FirefoxDriver();
+		driver.get("file:///H:/1CSA5workspace/AutomationProject/html%20files/Xpath-2.html");
+		//locator x-path by contains
+		driver.findElement(By.xpath(""))
+	}
+
+}

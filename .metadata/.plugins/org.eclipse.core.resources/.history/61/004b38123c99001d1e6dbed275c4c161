@@ -1,0 +1,20 @@
+package xpathscripts;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class XPathByText {
+
+	public static void main(String[] args) {
+		WebDriverManager.firefoxdriver().setup();
+		WebDriver driver=new FirefoxDriver();
+		driver.get("file:///H:/1CSA5workspace/AutomationProject/html%20files/WebPage01.html");
+		driver.findElement(By.xpath(".//span[text()='TextMsg_01']"));//--> x-path by text() to identify 1st Span
+		driver.findElement(By.xpath(".//span[text()='TextMsg_02']"));//--> x-path by text() to identify 2nd Span
+		driver.findElement(By.xpath(".//span[text()='TextMsg_03']"));//--> x-path by text() to identify 3rd Span
+	}
+
+}

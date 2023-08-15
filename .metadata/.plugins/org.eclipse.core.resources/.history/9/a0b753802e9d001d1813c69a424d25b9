@@ -1,0 +1,41 @@
+
+/*WATS to verify if password field aligned below username field or not */
+package assignmenttwotwentysixjan;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class UnANdPwdAlignment {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://demo.actitime.com/login.do");
+		//identify un field loc
+		WebElement un_loc = driver.findElement(By.xpath(".//input[@id='username']"));
+		//identify un_loc x-location
+		int x_loc_un = un_loc.getRect().getX();
+		//identify un_loc x-location
+		int y_loc_un = un_loc.getRect().getY();
+		
+		//identify password field
+		WebElement pwd_loc = driver.findElement(By.xpath(".//input[@name='pwd']"));
+		//identify pwd field x loc
+		int x_loc_pwd = pwd_loc.getRect().getX();
+		//identify un_loc x-location
+		int y_loc_pwd = pwd_loc.getRect().getY();
+		
+		
+		//verify if un and pwd x-loc is same or not
+		if (x_loc_un==x_loc_pwd && y_loc_pwd>y_loc_un) {
+			System.out.println("Username and password field are aligned perfectly !");
+		}
+		else
+		{
+			System.out.println("Both fields are not aligned perfectly.");
+		}
+	}
+
+}

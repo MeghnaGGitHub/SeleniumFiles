@@ -1,0 +1,4 @@
+${abc} = Aaron Finch 
+
+
+//td[@class="cb-srs-stats-td text-left"]//a[text()='${abc}']

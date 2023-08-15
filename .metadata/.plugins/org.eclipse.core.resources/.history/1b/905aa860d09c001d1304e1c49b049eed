@@ -1,0 +1,41 @@
+/* 
+ WATS to perform folln actions:
+ 1.Open fb appln.
+ 2.Click on Create new Account.
+ 3.Enter e-mail.
+ 4.Verify re-enter emailid field displayed or not.
+ 5.Remove email & verify re-enter 
+*/
+package assignmentoneontwentyfivejan;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class Assignque_01 {
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://fb.com");
+		driver.findElement(By.xpath(".//a[text()='Create new account']")).click();
+		Thread.sleep(5000);
+		WebElement enter_emailid = driver.findElement(By.xpath(".//input[@class='inputtext _58mg _5dba _2ph-' and @name='reg_email__']"));
+		enter_emailid.sendKeys("abc@gmail.com");
+		Thread.sleep(9000);
+		WebElement reenter_emailid=driver.findElement(By.xpath(".//input[@class='inputtext _58mg _5dba _2ph-' and @name='reg_email_confirmation__']"));
+		boolean status = reenter_emailid.isDisplayed();
+		if (status) 
+			{
+			System.out.println("Re-enter field is displayed!!!");
+		}
+		else {
+			System.out.println("Re-enter field is not displayed!!!");
+		}
+		enter_emailid.clear();
+		boolean status2 = reenter_emailid.isDisplayed();
+		System.out.println("after running twice re-enter field status is:"+status2);
+	}
+
+}

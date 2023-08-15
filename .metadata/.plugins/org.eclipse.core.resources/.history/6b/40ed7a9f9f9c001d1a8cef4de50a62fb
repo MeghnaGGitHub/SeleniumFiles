@@ -1,0 +1,44 @@
+/* 1.WATS to verify username and password field dimensions are same or not. */
+package assignmentoneontwentyfivejan;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Assignque_02 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://demo.actitime.com/login.do");
+		//identify un field loc
+		WebElement un_loc = driver.findElement(By.xpath(".//input[@id='username']"));
+		//identify un_loc height & width
+		int hw_un = un_loc.getRect().getDimension().getHeight()+un_loc.getRect().getDimension().getWidth();
+		System.out.println("Username field height and width is:"+hw_un);
+		/*identify un_loc width
+		int w_un=
+		//identify un_loc x_loc
+		int un_x_loc = un_loc.getRect().getX();
+		//identify un_loc y_loc
+		int un_y_loc = un_loc.getRect().getY();
+		
+		//identify password field
+		WebElement pwd_loc = driver.findElement(By.xpath(".//input[@name='pwd']"));
+		//identify un_loc height
+		int h_pwd= pwd_loc.getRect().getHeight();
+		//identify un_loc width
+		int w_pwd = pwd_loc.getRect().getWidth();
+		//identify un_loc x_loc
+		int pwd_x_loc_ = pwd_loc.getRect().getX();
+		//identify un_loc y_loc
+		int pwd_y_loc = pwd_loc.getRect().getY();
+		
+		if () {
+			
+		}*/
+		
+	}
+
+}

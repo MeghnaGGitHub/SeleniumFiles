@@ -1,0 +1,112 @@
+package ixigotestscripts;
+
+import java.time.Duration;
+import java.util.NoSuchElementException;
+import java.util.Scanner;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+
+public class IxigoBookingFlow {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		Scanner input=new Scanner(System.in);
+		System.out.println("Enter Origin City"); 
+		String fromCity=input.nextLine(); //Pune
+		System.out.println("Enter Destination City"); 
+		String toCity=input.nextLine(); //Delhi
+		System.out.println("Enter Departure Date - DDMMYYYY");
+		String departureDate=input.nextLine(); //24042023  - DDMMYYYY
+		System.out.println("Enter Departure Time - HH:MM");
+		String departureTime=input.nextLine(); //13:00     - HH:MM
+		System.out.println("Enter no of Adults - 1 to 9");
+		String noOfAdults=input.nextLine(); // Value 1 to 9
+		byte totalTravellers=Byte.valueOf(noOfAdults);
+		byte maxTravellers=9;
+		System.out.println("Enter no of Children - 0 to "+(maxTravellers-totalTravellers));
+		String noOfChildren=input.nextLine(); // Value 0 to maxAllowed
+		totalTravellers+=Byte.valueOf(noOfChildren);
+		Byte infantCounter;
+		if((maxTravellers-totalTravellers)>4)
+		{
+			infantCounter=4;
+		}
+		else
+		{
+			infantCounter=(byte) (maxTravellers-totalTravellers);
+		}
+		System.out.println("Enter no of Infants - 0 to "+infantCounter);
+		String noOfInfants=input.nextLine(); // Value 1 to infantCounter
+		totalTravellers+=Byte.valueOf(noOfInfants);
+		if(totalTravellers>9)
+		{
+			System.out.println("Maximum 9 travellers are allowed\nTry Again with correct values\nTerminating Program . . . .");
+			System.exit(0);
+		}
+		System.out.println("Select Class of Travel [1/2/3]\n1. Economy\n2. Business\n3. Premium Economy");
+		String classOfTravel="Economy";
+		switch (input.nextByte()) 
+		{
+		case 1:
+			classOfTravel="Economy";
+			break;
+		case 2:
+			classOfTravel="Business";
+			break;
+		case 3:
+			classOfTravel="Premium Economy";
+			break;
+		default:
+			{
+				System.out.println("Invalid Selection\nTerminating Program. . . .");
+				System.exit(0);
+			}
+		}
+		System.out.println(classOfTravel+" class is Selected");
+		WebDriver driver = new ChromeDriver();
+		driver.get("http://ixigo.com");
+		WebElement fromCityBox=driver.findElement(By.xpath("(.//input[@class='c-input u-v-align-middle' and @placeholder='Enter city or airport'])[1]"));
+		WebElement toCityBox=driver.findElement(By.xpath("(.//input[@class='c-input u-v-align-middle' and @placeholder='Enter city or airport'])[2]"));
+		WebElement departureDateBox=driver.findElement(By.xpath(".//input[@class='c-input u-v-align-middle' and @placeholder='Depart']"));
+		WebElement passengers=driver.findElement(By.xpath(".//*[@value='1 Passenger, Economy']"));
+		Thread.sleep(1000);
+		fromCityBox.sendKeys(fromCity);
+		Thread.sleep(1500);
+		fromCityBox.sendKeys(Keys.ENTER);
+		Thread.sleep(1000);
+		toCityBox.sendKeys(toCity);
+		Thread.sleep(1500);
+		toCityBox.sendKeys(Keys.ENTER);
+		Thread.sleep(1000);
+		departureDateBox.click();
+		Thread.sleep(1000);
+		while(driver.findElements(By.xpath(".//td[@data-date='"+departureDate+"']")).isEmpty())
+		{
+			driver.findElement(By.xpath(".//button[@class='ixi-icon-arrow rd-next']")).click();
+			Thread.sleep(1000);
+		}
+		driver.findElement(By.xpath(".//td[@data-date='"+departureDate+"']")).click();
+		Thread.sleep(1000);
+		passengers.click();
+		driver.findElement(By.xpath(".//*[text()='Adult']/parent::div/following-sibling::div/child::span[text()='"+noOfAdults+"']")).click();
+		driver.findElement(By.xpath(".//*[text()='Child']/parent::div/following-sibling::div/child::span[text()='"+noOfChildren+"']")).click();
+		driver.findElement(By.xpath(".//*[text()='Infant']/parent::div/following-sibling::div/child::span[text()='"+noOfInfants+"']")).click();
+		driver.findElement(By.xpath(".//span[text()='"+classOfTravel+"']")).click();
+		driver.findElement(By.xpath(".//button[@class='c-btn u-link  enabled']")).click();
+		FluentWait wait = new FluentWait(driver);
+		wait.withTimeout(Duration.ofSeconds(30));
+		wait.pollingEvery(Duration.ofMillis(500));
+		wait.ignoring(NoSuchElementException.class);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(.//div[text()='"+departureTime+"'])[1]/ancestor::div[@class='summary-section']/descendant::button[text()='Book']")));
+		driver.findElement(By.xpath("(.//div[text()='"+departureTime+"'])[1]/ancestor::div[@class='summary-section']/descendant::button[text()='Book']")).click();
+		System.out.println("***Code Execution Finished***");
+	}
+
+}

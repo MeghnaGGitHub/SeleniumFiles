@@ -1,0 +1,25 @@
+package independentanddependentxpath;
+
+public class PracticeFlipkart {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+//https://cellpoint.biz/
+	}
+
+}
+/* for flipkart
+ Q.1)Write expression to identify iphone 14 Blue 128 GB mobile ratings and review
+ Q.2)Write expression to identify discount for above model
+ Q.3)Write expression to identify Add to comoare checkbox for above model
+ for sangeethamobiles.com
+ https://www.sangeethamobiles.com
+ Q.4)Write expression to identify oneplus 8T mobile price.
+ cleartrip
+ https://www.goibibo.com
+ Q.5)Write expression to identify travelling price in Indigo at from Pune to Chennai with indigo for particular time of 15:50.
+ 23/jan/23
+ htps://www.amazon.in
+ Q.6)Write expression to identify actual price of Samsung Galaxy Z Fold3 5G(Phantom Green)
+ link to item:https://www.amazon.in/Samsung-Phantom-Storage-Additional-Exchange/dp/B09D2Z686L/ref=sr_1_1_sspa?keywords=samsung+fold&qid=1674447366&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1
+*/
